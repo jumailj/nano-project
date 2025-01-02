@@ -1,0 +1,29 @@
+/* Header.css */
+header {
+    background: linear-gradient(
+        135deg,
+        #ff7e5f,
+        #feb47b,
+        #ff6f91
+    ); /* Vibrant multi-color gradient */
+    color: #ffffff; /* White text for contrast */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Soft text shadow */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    font-family: "Arial", sans-serif; /* Clean font */
+    text-align: center; /* Center-align text */
+    font-size: 2rem; /* Larger font size for emphasis */
+    max-width: 100%; /* Ensure it doesn't overflow the screen */
+    box-sizing: border-box; /* Include padding in width calculations */
+}
+
+/* Adjusts for smaller screens */
+header .app-name {
+    font-size: 2.5em; /* Slightly smaller font for responsiveness */
+    color: white;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    word-wrap: break-word; /* Ensures text wraps inside the container */
+}

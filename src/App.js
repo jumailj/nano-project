@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import ".//App.css";
 
+import AlphabetCardContainer from "./AlphabetCardContainer";
+import Header from "./Header";
+// import "./AlphabetCardContainer.css";
+
 const App = () => {
   const [selectedLetter, setSelectedLetter] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
@@ -262,8 +266,9 @@ const App = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1>Alphabet Picture Generator</h1>
+    <div style={{ textAlign: "center", padding: "20px 20px 20px 20px" }}>
+      <Header />
+      <AlphabetCardContainer />
       <div
         style={{
           display: "grid",
