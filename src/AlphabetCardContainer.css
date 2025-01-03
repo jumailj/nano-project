@@ -5,3 +5,14 @@
     padding: 200px; /* Adjusted padding */
     justify-content: center; /* Centers the items horizontally */
 }
+
+.alphabet-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.image-title {
+    color: #000;
+}

@@ -1,24 +1,85 @@
-// AlphabetCardContainer.js
-import React from "react";
+import React, { useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import AlphabetCard from "./AlphabetCard";
+import Modal from "./Modal"; // Import a modal component
 import "./AlphabetCardContainer.css";
 
 const AlphabetCardContainer = () => {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // All alphabets
-  const imageSrcs = alphabet
-    .split("")
-    .map((letter) => `/img/alphabet/${letter.toUpperCase()}.png`); // Assuming the images are named 'a.jpg', 'b.jpg', etc.
+  const { speak } = useSpeechSynthesis();
+
+  const imageMap = {
+    A: ["aeroplane.jpeg", "ant.jpeg", "apple.png"],
+    B: ["ball.jpeg", "bat.jpeg", "boat.jpeg"],
+    C: ["cat.jpeg", "car.jpeg", "cup.jpeg"],
+  };
+
+  const [selectedLetter, setSelectedLetter] = useState(null);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null); // Store the selected random image
+
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  const handleCardClick = (letter) => {
+    setSelectedLetter(letter);
+
+    // Select a random image for the letter and store it in state
+    const images = imageMap[letter];
+    if (images) {
+      const randomIndex = Math.floor(Math.random() * images.length);
+      setSelectedImage(images[randomIndex]);
+    }
+
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false); // Close the modal
+    setSelectedImage(null); // Reset the selected image when the modal is closed
+  };
+
+  const handleSpeak = () => {
+    if (selectedImage) {
+      const imageName = selectedImage.split(".")[0]; // Get the name of the image
+      const message = `${selectedLetter.toUpperCase()} for ${imageName.toUpperCase()}`;
+      speak({ text: message });
+    }
+  };
 
   return (
-    <div>
-      {alphabet.split("").map((letter, index) => (
+    <div className="alphabet-card-container">
+      {alphabet.split("").map((letter) => (
         <AlphabetCard
+          imageSrc={`/img/alphabet/${letter}.png`}
           key={letter}
           letter={letter}
-          imageSrc={imageSrcs[index]}
+          onClick={() => handleCardClick(letter)}
         />
       ))}
+
+      {isModalOpen && selectedImage && (
+        <Modal onClose={closeModal}>
+          <div className="modal-content">
+            <img
+              src={`/img/images/${selectedLetter}/${selectedImage}`} // Image related to the letter
+              alt={`Object for ${selectedLetter}`}
+              className="modal-image"
+            />
+            <h2 className="image-title">
+              {
+                selectedImage
+                  .split(".")[0] // Remove the extension by taking only the part before the dot
+                  .toUpperCase() // Convert to uppercase
+              }
+            </h2>
+            <button className="speak-button" onClick={handleSpeak}>
+              Speak
+            </button>
+            <button className="close-button" onClick={closeModal}>
+              Close
+            </button>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

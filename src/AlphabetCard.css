@@ -8,14 +8,15 @@
     height: 130px; /* Makes the card 75px high */
     margin: 10px;
 
-    background: linear-gradient(45deg, #ff7e5f, #feb47b); /* Sunset gradient */
+    background: linear-gradient(45deg, #ffff, #fff);
 }
 
 .alphabet-card:hover {
     transition: transform 0.3s ease;
     transform: scale(1.03);
-    background: linear-gradient(45deg, #ffff, #fff);
+
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.9); /* Deeper shadow on hover */
+    background: linear-gradient(45deg, #ff7e5f, #feb47b); /* Sunset gradient */
 }
 
 .alphabet-card:active {
