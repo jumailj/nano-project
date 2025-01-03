@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import AlphabetCard from "./AlphabetCard";
 import Modal from "./Modal"; // Import a modal component
@@ -7,17 +7,34 @@ import "./AlphabetCardContainer.css";
 const AlphabetCardContainer = () => {
   const { speak } = useSpeechSynthesis();
 
-  const imageMap = {
-    A: ["aeroplane.jpeg", "ant.jpeg", "apple.png"],
-    B: ["ball.jpeg", "bat.jpeg", "boat.jpeg"],
-    C: ["cat.jpeg", "car.jpeg", "cup.jpeg"],
-  };
+  // Memoize the imageMap to avoid re-creating it on every render
+  const imageMap = useMemo(
+    () => ({
+      A: ["aeroplane.jpeg", "ant.jpeg", "apple.png"],
+      B: ["ball.jpeg", "bat.jpeg", "boat.jpeg"],
+      C: ["cat.jpeg", "car.jpeg", "cup.jpeg"],
+    }),
+    [],
+  ); // Empty dependency array ensures this runs only once
 
   const [selectedLetter, setSelectedLetter] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null); // Store the selected random image
 
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  // Preload all images when the component mounts
+  useEffect(() => {
+    const preloadImages = () => {
+      Object.keys(imageMap).forEach((letter) => {
+        imageMap[letter].forEach((imageName) => {
+          const img = new Image();
+          img.src = `/img/images/${letter}/${imageName}`;
+        });
+      });
+    };
+    preloadImages();
+  }, [imageMap]);
 
   const handleCardClick = (letter) => {
     setSelectedLetter(letter);

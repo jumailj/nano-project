@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useSpeechSynthesis } from "react-speech-kit";
+import React from "react";
 import ".//App.css";
 
 import AlphabetCardContainer from "./AlphabetCardContainer";
