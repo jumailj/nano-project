@@ -7,15 +7,20 @@ import "./AlphabetCardContainer.css";
 const AlphabetCardContainer = () => {
   const { speak } = useSpeechSynthesis();
 
-  // Memoize the imageMap to avoid re-creating it on every render
   const imageMap = useMemo(
     () => ({
       A: ["aeroplane.jpeg", "ant.jpeg", "apple.png"],
       B: ["ball.jpeg", "bat.jpeg", "boat.jpeg"],
       C: ["cat.jpeg", "car.jpeg", "cup.jpeg"],
+      D: ["dog.jpeg", "drum.jpeg", "duck.jpeg"],
+      E: ["elephant.jpeg", "egg.jpeg", "eraser.jpeg"],
+      F: ["fish.jpeg", "flower.jpeg", "flag.jpeg"],
+      G: ["gloat.jpeg", "grass.jpeg", "guitar.jpeg"],
+      H: ["hat.jpeg", "helicopter.jpeg", "house.jpeg"],
+      I: ["icecream.jpeg", "ice.jpeg", "island.jpeg"],
     }),
     [],
-  ); // Empty dependency array ensures this runs only once
+  );
 
   const [selectedLetter, setSelectedLetter] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -50,8 +55,8 @@ const AlphabetCardContainer = () => {
   };
 
   const closeModal = () => {
-    setModalOpen(false); // Close the modal
-    setSelectedImage(null); // Reset the selected image when the modal is closed
+    setModalOpen(false);
+    setSelectedImage(null);
   };
 
   const handleSpeak = () => {
@@ -77,16 +82,12 @@ const AlphabetCardContainer = () => {
         <Modal onClose={closeModal}>
           <div className="modal-content">
             <img
-              src={`/img/images/${selectedLetter}/${selectedImage}`} // Image related to the letter
+              src={`/img/images/${selectedLetter}/${selectedImage}`}
               alt={`Object for ${selectedLetter}`}
               className="modal-image"
             />
             <h2 className="image-title">
-              {
-                selectedImage
-                  .split(".")[0] // Remove the extension by taking only the part before the dot
-                  .toUpperCase() // Convert to uppercase
-              }
+              {selectedImage.split(".")[0].toUpperCase()}
             </h2>
             <button className="speak-button" onClick={handleSpeak}>
               Speak
