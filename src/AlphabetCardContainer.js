@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import AlphabetCard from "./AlphabetCard";
 import Modal from "./Modal"; // Import a modal component
+import "./Modal.css";
 import "./AlphabetCardContainer.css";
 
 const AlphabetCardContainer = () => {
@@ -13,11 +14,30 @@ const AlphabetCardContainer = () => {
       B: ["ball.jpeg", "bat.jpeg", "boat.jpeg"],
       C: ["cat.jpeg", "car.jpeg", "cup.jpeg"],
       D: ["dog.jpeg", "drum.jpeg", "duck.jpeg"],
-      E: ["elephant.jpeg", "egg.jpeg", "eraser.jpeg"],
+      E: ["elephand.jpeg", "egg.jpeg", "eraser.jpeg"],
       F: ["fish.jpeg", "flower.jpeg", "flag.jpeg"],
-      G: ["gloat.jpeg", "grass.jpeg", "guitar.jpeg"],
+      G: ["goat.jpeg", "grass.jpeg", "guitar.jpeg"],
       H: ["hat.jpeg", "helicopter.jpeg", "house.jpeg"],
       I: ["icecream.jpeg", "ice.jpeg", "island.jpeg"],
+      J: ["jacket.jpg", "jam.jpg", "juice.jpg"],
+      K: ["kangaroo.jpg", "kite.jpg", "king.jpg"],
+      L: ["lion.jpg", "leaf.jpg", "ladder.jpg"],
+      M: ["milk.jpg", "monkey.jpg", "mango.jpg"],
+
+      N: ["nest.jpg", "nut.jpg", "necklace.jpg"],
+      O: ["octopus.jpg", "orange.jpg", "onion.jpg"],
+      P: ["pigeon.jpg", "pillow.jpg", "pumpkin.jpg"],
+      Q: ["queen.jpg", "question.jpg", "queue.jpg"],
+      R: ["rabbit.jpg", "rose.jpg", "ring.jpg"],
+
+      S: ["snake.jpg", "ship.jpg", "sheep.jpg"],
+      T: ["telephone.jpg", "tree.jpg", "truck.jpg"],
+      U: ["umberlla.jpg", "unicorn.jpg", "uniform.jpg"],
+      V: ["vase.jpg", "van.jpg", "violin.jpg"],
+      W: ["wallet.jpg", "watch.jpg", "watermelon.jpg"],
+      X: ["x-mas tree.jpg", "xray.jpg", "xylophone.jpg"],
+      Y: ["yak.jpg", "yam.jpg", "yarn.jpg"],
+      Z: ["zebra.jpg", "zoo.jpg", "zip.jpg"],
     }),
     [],
   );
@@ -89,12 +109,14 @@ const AlphabetCardContainer = () => {
             <h2 className="image-title">
               {selectedImage.split(".")[0].toUpperCase()}
             </h2>
-            <button className="speak-button" onClick={handleSpeak}>
-              Speak
-            </button>
-            <button className="close-button" onClick={closeModal}>
-              Close
-            </button>
+            <div className="modal-buttons">
+              <button className="speak-button" onClick={handleSpeak}>
+                Speak
+              </button>
+              <button className="close-button" onClick={closeModal}>
+                Close
+              </button>
+            </div>
           </div>
         </Modal>
       )}

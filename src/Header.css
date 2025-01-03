@@ -1,5 +1,6 @@
 /* Header.css */
 header {
+    margin-bottom: 5%;
     background: linear-gradient(
         135deg,
         #ff7e5f,
@@ -8,7 +9,7 @@ header {
     ); /* Vibrant multi-color gradient */
     color: #ffffff; /* White text for contrast */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Soft text shadow */
-    border-radius: 10px; /* Rounded corners for a modern look */
+    /* border-radius: 10px;  */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
     font-family: "Arial", sans-serif; /* Clean font */
     text-align: center; /* Center-align text */
