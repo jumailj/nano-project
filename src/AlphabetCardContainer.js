@@ -35,7 +35,7 @@ const AlphabetCardContainer = () => {
       U: ["umberlla.jpg", "unicorn.jpg", "uniform.jpg"],
       V: ["vase.jpg", "van.jpg", "violin.jpg"],
       W: ["wallet.jpg", "watch.jpg", "watermelon.jpg"],
-      X: ["x-mas tree.jpg", "xray.jpg", "xylophone.jpg"],
+      X: ["x-mas tree.jpg", "x-mas crib.jpeg", "xylophone.jpg"],
       Y: ["yak.jpg", "yam.jpg", "yarn.jpg"],
       Z: ["zebra.jpg", "zoo.jpg", "zip.jpg"],
     }),

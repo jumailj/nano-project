@@ -5,7 +5,7 @@ import "./Header.css"; // Import the CSS file
 const Header = () => {
   return (
     <header className="header">
-      <div className="app-name">Nano Project</div>
+      <div className="app-name">ABC Explorer</div>
     </header>
   );
 };
